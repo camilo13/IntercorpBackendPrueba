@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CrearClienteRequest {
 	
-    public static final String MSG_NOT_EMPTY = "no puede quedar sin valor";
+    public static final String MSG_NOT_EMPTY = "No puede quedar sin valor";
 
     @NotEmpty(message = MSG_NOT_EMPTY)
     private String nombre;

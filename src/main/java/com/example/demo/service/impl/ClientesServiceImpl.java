@@ -1,7 +1,5 @@
 package com.example.demo.service.impl;
 
-import lombok.AllArgsConstructor;
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -21,8 +19,6 @@ import com.example.demo.utils.Operaciones;
 @Service
 public class ClientesServiceImpl implements ClientesService {
 
-//    private final ParametersRepository parametersRepository;
-//    private final ErrorMessageRepository errorMessageRepository;
 	private List<Cliente> clientes = new ArrayList<>();
 	private double promedio, desviacion;
 
@@ -40,31 +36,11 @@ public class ClientesServiceImpl implements ClientesService {
     public CrearClienteResponse post(CrearClienteRequest request) {
     	
     	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
-
-//        GenerarCipResponse generarCipResponse = null;
-
-//        Parameters accessToken = parametersRepository.findByElement("aldeamo.token.accesstoken");
-//        Parameters refreshToken = parametersRepository.findByElement("aldeamo.token.refreshtoken");
-//        TdpErrorMessageService message = errorMessageRepository.findByServiceCodeAndServiceKey("UF2", "upfront2");
-
-//        String aux = message.getResponseMessage().replace("{CIP}",
-//            String.valueOf(generarCipResponse.getData().getCip())).replace("{monto}",
-//            String.valueOf(generarCipResponse.getData().getAmount()))
-//            .replace("{fecha}", Objects.requireNonNull(parseStringDateAldeamo(request.getExpirationDate())));
-
-//        AldeamoRequest aldeamoRequest = new AldeamoRequest(createHeaders(), AldeamoBodyIn.of(aux,
-//            new AldeamoShortcut(request.getUserPhone(),
-//                generarCipResponse.getData().getCipUrl())));
     	
     	LocalDate auxFechaNac = LocalDate.parse(request.getFechaNacimiento(), formatter);
     	Period edad = Period.between(auxFechaNac, LocalDate.now());
     	
-    	Cliente cliente = new Cliente();
-    	
-    	cliente.setNombre(request.getNombre());
-    	cliente.setApellido(request.getApellido());
-    	cliente.setFechaNac(auxFechaNac);
-    	cliente.setEdad(edad.getYears());
+    	Cliente cliente = new Cliente(request.getNombre(), request.getApellido(), edad.getYears(), auxFechaNac);
 
     	System.out.println(cliente);
     	clientes.add(cliente);
