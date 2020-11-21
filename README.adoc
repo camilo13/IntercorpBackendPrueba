@@ -1,0 +1,18 @@
+
+= Project ITRetail
+
+
+
+= BACKEND
+
+The microservice was developed in Java 8 with Spring Boot 
+
+== Resources
+* Java 8
+* Spring Boot
+* IBM Cloud
+* Swagger UI
+
+== Testing
+the swagger documentation is:
+http://ms-clientes-dev.mybluemix.net/swagger-ui.html#
